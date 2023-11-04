@@ -1,12 +1,12 @@
 const { client } = require('../middlware/database');
 
 class Player {
-    constructor(player_name, player_age, player_height, player_team, player_nationalty, player_photo_url) {
+    constructor(player_name, player_age, player_height, player_team, player_nationality, player_photo_url) {
         this.player_name = player_name;
         this.player_age = player_age;
         this.player_height = player_height;
         this.player_team = player_team;
-        this.player_nationalty = player_nationalty;
+        this.player_nationality = player_nationality;
         this.player_photo_url = player_photo_url;
     }
 
@@ -21,13 +21,13 @@ class Player {
 
     static addPlayer(player) {
         const query = {
-            text: 'INSERT INTO public."Players"("Name", "Age", "Height", "Team", "Nationalty", "PhotoUrl") VALUES($1, $2, $3, $4, $5, $6)',
+            text: 'INSERT INTO public."Players"("Name", "Age", "Height", "Team", "Nationality", "PhotoUrl") VALUES($1, $2, $3, $4, $5, $6)',
             values: [
                 player.player_name,
                 player.player_age,
                 player.player_height,
                 player.player_team,
-                player.player_nationalty,
+                player.player_nationality,
                 player.player_photo_url
             ]
         };
@@ -43,14 +43,14 @@ class Player {
 
         const query = {
             text: `UPDATE public."Players"
-            SET "Name"=$1, "Age"=$2, "Height"=$3, "Team"=$4, "Nationalty"=$5, "PhotoUrl"=$6 
+            SET "Name"=$1, "Age"=$2, "Height"=$3, "Team"=$4, "Nationality"=$5, "PhotoUrl"=$6 
             WHERE id=${playerId}`,
             set : [
                 player.player_name,
                 player.player_age,
                 player.player_height,
                 player.player_team,
-                player.player_nationalty,
+                player.player_nationality,
                 player.player_photo_url
             ]
         };

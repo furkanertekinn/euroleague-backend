@@ -8,11 +8,11 @@ function getPlayers(req, res) {
 
 function addPlayers(req, res) {
     const {
-        player_name, player_age, player_height, player_team, player_nationalty, player_photo_url
+        player_name, player_age, player_height, player_team, player_nationality, player_photo_url
     } = req.body;
 
     const newPlayer = new Player(
-        player_name, player_age, player_height, player_team, player_nationalty, player_photo_url
+        player_name, player_age, player_height, player_team, player_nationality, player_photo_url
     );
 
     Player.addPlayer(newPlayer);
@@ -24,11 +24,11 @@ function updatePlayers(req, res) {
     const playerId = req.params.id;
 
     const {
-        player_name, player_age, player_height, player_team, player_nationalty, player_photo_url
+        player_name, player_age, player_height, player_team, player_nationality, player_photo_url
     } = req.body;
 
     const updatePlayer = new Player(
-        player_name, player_age, player_height, player_team, player_nationalty, player_photo_url
+        player_name, player_age, player_height, player_team, player_nationality, player_photo_url
     );
 
     Player.updatePlayer(updatePlayer,playerId);
