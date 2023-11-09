@@ -40,18 +40,17 @@ class Player {
     }
 
     static updatePlayer(player, playerId) {
-
         const query = {
             text: `UPDATE public."Players"
             SET "Name"=$1, "Age"=$2, "Height"=$3, "Team"=$4, "Nationality"=$5, "PhotoUrl"=$6 
             WHERE id=${playerId}`,
-            set : [
+            values : [
                 player.player_name,
                 player.player_age,
                 player.player_height,
                 player.player_team,
                 player.player_nationality,
-                player.player_photo_url
+                player.player_photo_url,
             ]
         };
 

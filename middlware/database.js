@@ -12,5 +12,5 @@ const connectToDatabase = () => {
 
 module.exports = {
     client,
-    connectToDatabase,
+    connectToDatabase
 };

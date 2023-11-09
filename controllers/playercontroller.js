@@ -20,7 +20,6 @@ function addPlayers(req, res) {
 }
 
 function updatePlayers(req, res) {
-
     const playerId = req.params.id;
 
     const {
