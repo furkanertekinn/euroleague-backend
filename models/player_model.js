@@ -19,6 +19,18 @@ class Player {
         });
     }
 
+
+    static getPlayersById(playerId, callback) {
+        client.query(`Select * From public."Players" WHERE id=${playerId}`, (err, res) => {
+            if (err) {
+                console.error('Error fetching players: ' + err);
+                callback(err, null);
+            } else {
+                callback(null, res.rows[0]);
+            }
+        });
+    }
+
     static addPlayer(player) {
         const query = {
             text: 'INSERT INTO public."Players"("Name", "Age", "Height", "Team", "Nationality", "PhotoUrl") VALUES($1, $2, $3, $4, $5, $6)',
@@ -44,7 +56,7 @@ class Player {
             text: `UPDATE public."Players"
             SET "Name"=$1, "Age"=$2, "Height"=$3, "Team"=$4, "Nationality"=$5, "PhotoUrl"=$6 
             WHERE id=${playerId}`,
-            values : [
+            values: [
                 player.player_name,
                 player.player_age,
                 player.player_height,

@@ -6,6 +6,18 @@ function getPlayers(req, res) {
     });
 }
 
+function getPlayersId(req, res) {
+    const playerId = req.params.id;
+
+    Player.getPlayersById(playerId, (error, result) => {
+        if (error) {
+            console.error('Error:', error);
+        } else {
+            res.json(result);
+        }
+    });
+}
+
 function addPlayers(req, res) {
     const {
         player_name, player_age, player_height, player_team, player_nationality, player_photo_url
@@ -30,12 +42,12 @@ function updatePlayers(req, res) {
         player_name, player_age, player_height, player_team, player_nationality, player_photo_url
     );
 
-    Player.updatePlayer(updatePlayer,playerId);
+    Player.updatePlayer(updatePlayer, playerId);
     res.send("Player uptaded successfully");
 }
 
 function deletePlayers(req, res) {
-    
+
     const playerId = req.params.id;
 
     Player.deletePlayer(playerId);
@@ -44,6 +56,7 @@ function deletePlayers(req, res) {
 
 module.exports = {
     getPlayers,
+    getPlayersId,
     addPlayers,
     updatePlayers,
     deletePlayers
