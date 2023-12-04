@@ -7,6 +7,7 @@ const addPlayerRoutes = require('./routes/add_player_routes');
 const updatePlayerRoutes = require('./routes/update_player_routes');
 const deletePlayersRoutes = require('./routes/delete_player_routes');
 const getPlayerByIdRoutes = require('./routes/get_player_by_id_routes');
+const getGameRoutes = require('./routes/get_game_routes');
 
 const corsOptions = {
     origin: '*',
@@ -23,6 +24,7 @@ app.use('/', addPlayerRoutes);
 app.use('/', updatePlayerRoutes);
 app.use('/', deletePlayersRoutes);
 app.use('/', getPlayerByIdRoutes);
+app.use('/', getGameRoutes);
 
 connectToDatabase();
 
