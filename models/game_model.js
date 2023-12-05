@@ -1,15 +1,23 @@
 const { client } = require('../middlware/database');
 
 class Game {
-    constructor(game_home, game_home_number, game_away, game_away_number, game_date_id) {
-        this.game_home = game_home;
-        this.game_home_number = game_home_number;
-        this.game_away = game_away;
-        this.game_away_number = game_away_number;
-        this.game_date_id = game_date_id;
+    constructor(game_home_team, game_home_point, game_away_team, game_away_point, match_date) {
+        this.game_home_team = game_home_team;
+        this.game_home_point = game_home_point;
+        this.game_away_team = game_away_team;
+        this.game_away_point = game_away_point;
+        this.match_date = match_date;
     }
     static getAllGames(callback) {
-        client.query(`Select * From public."Games"`, (err, res) => {
+        client.query(`SELECT 
+        public."Games"."HomeTeam",
+        public."Games"."HomePoint",
+        public."Games"."AwayTeam",
+        public."Games"."AwayPoint",
+        public."MatchDates"."Date"
+        FROM public."Games" 
+        inner join public."MatchDates" 
+        on public."Games"."DateId" = public."MatchDates"."Id";`, (err, res) => {
             if (err) {
                 console.error('Error fetching games: ' + err);
             }
