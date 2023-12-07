@@ -19,7 +19,6 @@ class Player {
         });
     }
 
-
     static getPlayersById(playerId, callback) {
         client.query(`Select * From public."Players" WHERE id=${playerId}`, (err, res) => {
             if (err) {
