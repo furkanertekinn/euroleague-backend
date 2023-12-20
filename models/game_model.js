@@ -1,4 +1,4 @@
-const { client } = require('../middlware/database');
+const { client } = require('../middleware/database');
 
 class Game {
     constructor(game_home_team, game_home_point, game_away_team, game_away_point, game_home_logo, game_away_logo, match_date) {

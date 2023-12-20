@@ -1,4 +1,4 @@
-const { connectToDatabase } = require('./middlware/database');
+const { connectToDatabase } = require('./middleware/database');
 const express = require('express');
 const app = express();
 const cors = require("cors");
